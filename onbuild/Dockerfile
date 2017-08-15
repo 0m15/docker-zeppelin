@@ -32,13 +32,13 @@ ENV ZEPPELIN_CONF_DIR     $ZEPPELIN_HOME/conf
 ENV ZEPPELIN_NOTEBOOK_DIR $ZEPPELIN_HOME/notebook
 ENV ZEPPELIN_PORT         8080
 
-RUN git clone https://github.com/apache/incubator-zeppelin.git $ZEPPELIN_HOME
+RUN git clone https://github.com/0m15/zeppelin.git $ZEPPELIN_HOME
 COPY ./install.sh $ZEPPELIN_HOME/install.sh
 
 # INSTALL & CLEAN
 WORKDIR $ZEPPELIN_HOME
 ONBUILD COPY ./install.sh install.sh
-ONBUILD RUN ./install.sh \		
+ONBUILD RUN ./install.sh \
     && rm -rf /root/.m2 \
     && rm -rf /root/.npm
 
